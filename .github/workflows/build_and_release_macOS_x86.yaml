@@ -97,7 +97,12 @@ jobs:
             -DLAF_BACKEND=$laf_backend \
             -DSKIA_DIR=$(realpath skia) \
             -DOPENSSL_USE_STATIC_LIBS=ON \
-            -DSKIA_LIBRARY_DIR=$(realpath skia/out/Release-$skia_arch)      - name: Compiling
+            -DSKIA_LIBRARY_DIR=$(realpath skia/out/Release-$skia_arch)
+      - name: Compiling
+        shell: bash
+        working-directory: aseprite
+        run: |
+          cd build && ninja
       - name: Clean Up Build folder
         working-directory: aseprite/build/bin
         shell: bash
